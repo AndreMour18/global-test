@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useFormik } from "formik";
 
 import { SearchBar, WordResult, ThemeToggle, FontSelector } from "~/components";
@@ -54,17 +54,19 @@ const Home: React.FC<Props> = ({ toggleTheme, setFontFamily }) => {
     }
   };
 
-  const handleSearchBarChange = (value: string) => {
-    setFieldValue("word", value);
+  const handleSearchBarChange = useCallback(
+    (value: string) => {
+      setFieldValue("word", value);
+      if (apiError) {
+        setApiError("");
+      }
+    },
+    [setFieldValue, apiError]
+  );
 
-    if (apiError) {
-      setApiError("");
-    }
-  };
-
-  const handleSearchBarSearch = () => {
+  const handleSearchBarSearch = useCallback(() => {
     handleSubmit();
-  };
+  }, [handleSubmit]);
 
   return (
     <Container>
