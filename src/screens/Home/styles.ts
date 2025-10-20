@@ -17,3 +17,11 @@ export const ErrorMsg = styled.p`
   color: red;
   margin-top: 10px;
 `;
+
+export const LoadingText = styled.p`
+  color: #666;
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  font-style: italic;
+`;
