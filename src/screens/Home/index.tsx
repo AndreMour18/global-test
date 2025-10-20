@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 
-import SearchBar from "~/components/SearchBar";
-import WordResult from "~/components/WordResult";
-import ThemeToggle from "~/components/ThemeToggle";
-import FontSelector from "~/components/FontSelector";
+import { SearchBar, WordResult, ThemeToggle, FontSelector } from "~/components";
 
 import { Container, ErrorMsg, Header, LoadingText } from "./styles";
 import { validationSchema } from "./validationSchema";
