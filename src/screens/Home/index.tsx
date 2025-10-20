@@ -24,9 +24,7 @@ const Home: React.FC<Props> = ({ toggleTheme }) => {
     }
 
     try {
-      const res = await fetch(
-        `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
-      );
+      const res = await fetch(`/api/v2/entries/en/${encodeURIComponent(word)}`);
       const data = await res.json();
       if (Array.isArray(data)) {
         setResult(data[0]);
