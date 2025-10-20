@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import SearchBar from "~/components/SearchBar";
 import WordResult from "~/components/WordResult";
 import ThemeToggle from "~/components/ThemeToggle";
+import FontSelector from "~/components/FontSelector";
 
 import { Container, ErrorMsg, Header } from "./styles";
 
@@ -11,7 +12,7 @@ interface Props {
   setFontFamily: (font: string) => void;
 }
 
-const Home: React.FC<Props> = ({ toggleTheme }) => {
+const Home: React.FC<Props> = ({ toggleTheme, setFontFamily }) => {
   const [word, setWord] = useState("");
   const [result, setResult] = useState<any>(null);
   const [error, setError] = useState("");
@@ -41,6 +42,7 @@ const Home: React.FC<Props> = ({ toggleTheme }) => {
   return (
     <Container>
       <Header>
+        <FontSelector onChange={setFontFamily} />
         <ThemeToggle onToggle={toggleTheme} />
       </Header>
       <SearchBar value={word} onChange={setWord} onSearch={handleSearch} />
