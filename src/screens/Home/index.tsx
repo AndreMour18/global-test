@@ -82,7 +82,11 @@ const Home: React.FC<Props> = ({
       <Header>
         <Book />
         <div className="controls">
-          <FontSelector onChange={setFontFamily} />
+          <FontSelector
+            onChange={setFontFamily}
+            currentFont={currentFont}
+            theme={currentTheme}
+          />
           <Divider />
           <ThemeToggle onToggle={toggleTheme} currentTheme={currentTheme} />
         </div>
