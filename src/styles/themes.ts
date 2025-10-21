@@ -1,11 +1,19 @@
 export const lightTheme = {
-  background: "#ffffff",
-  text: "#111111",
-  primary: "#4b6aff",
+  fontFamily: "Inter, sans-serif",
+  background: "#FFFFFF",
+  text: "#2D2D2D",
+  textSecondary: "#757575",
+  divider: "#E9E9E9",
+  accent: "#A445ED",
+  error: "#FF5252",
 };
 
 export const darkTheme = {
-  background: "#111111",
-  text: "#ffffff",
-  primary: "#8ab4f8",
+  fontFamily: "Inter, sans-serif",
+  background: "#050505",
+  text: "#FFFFFF",
+  textSecondary: "#757575",
+  divider: "#3A3A3A",
+  accent: "#A445ED",
+  error: "#FF5252",
 };

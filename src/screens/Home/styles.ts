@@ -1,27 +1,58 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  max-width: 800px;
+interface ContainerProps {
+  fontFamily: string;
+}
+
+export const Container = styled.div<ContainerProps>`
+  min-height: 100vh;
+  padding: 1.5rem;
+  background-color: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.text};
+  transition: all 0.3s ease;
+  font-family: ${({ fontFamily }) => fontFamily};
+  max-width: 737px;
   margin: 0 auto;
-  padding: 20px;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 `;
 
-export const Header = styled.div`
+export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 3rem;
+
+  .controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 1.5rem;
+  }
 `;
 
-export const ErrorMsg = styled.p`
-  color: red;
-  margin-top: 10px;
+export const Divider = styled.div`
+  width: 1px;
+  height: 32px;
+  background-color: ${({ theme }) => theme.divider};
+`;
+
+export const ErrorMsg = styled.span`
+  color: #ff5252;
+  font-size: 1.125rem;
+  margin-top: 0.5rem;
+  display: block;
+  text-align: center;
 `;
 
 export const LoadingText = styled.p`
-  color: #666;
+  font-size: 1.125rem;
   text-align: center;
-  margin: 1rem 0;
-  font-size: 0.9rem;
-  font-style: italic;
+  margin-top: 3rem;
+  color: ${({ theme }) => theme.textSecondary};
 `;

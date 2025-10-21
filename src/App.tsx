@@ -15,6 +15,8 @@ const App: React.FC = () => {
       <Home
         toggleTheme={() => setIsDark(!isDark)}
         setFontFamily={setFontFamily}
+        currentFont={fontFamily}
+        currentTheme={isDark ? "dark" : "light"}
       />
     </ThemeProvider>
   );

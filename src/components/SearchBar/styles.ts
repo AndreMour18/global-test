@@ -13,7 +13,7 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  background: ${({ theme }) => theme.primary};
+  background: ${({ theme }) => theme.accent};
   color: white;
   border: none;
   border-radius: 8px;
