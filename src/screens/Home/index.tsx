@@ -1,7 +1,13 @@
 import React, { useState, useCallback } from "react";
 import { useFormik } from "formik";
 
-import { SearchBar, WordResult, ThemeToggle, FontSelector } from "~/components";
+import {
+  SearchBar,
+  WordResult,
+  ThemeToggle,
+  FontSelector,
+  NoDefinitions,
+} from "~/components";
 import { Book } from "~/assets/svgs";
 
 import { Container, ErrorMsg, Header, LoadingText, Divider } from "./styles";
@@ -50,12 +56,10 @@ const Home: React.FC<Props> = ({
           setResult(data[0]);
           setApiError("");
         } else {
-          setApiError("Palavra não encontrada.");
-          setResult(null);
+          setApiError("not_found");
         }
       } catch (error) {
-        setApiError("Erro ao buscar palavra.");
-        setResult(null);
+        setApiError("not_found");
       } finally {
         setIsLoading(false);
       }
@@ -102,7 +106,8 @@ const Home: React.FC<Props> = ({
       />
 
       {touched.word && errors.word && <ErrorMsg>{errors.word}</ErrorMsg>}
-      {apiError && <ErrorMsg>{apiError}</ErrorMsg>}
+      {apiError === "not_found" && <NoDefinitions />}
+      {apiError && apiError !== "not_found" && <ErrorMsg>{apiError}</ErrorMsg>}
       {isLoading && <LoadingText>Loading...</LoadingText>}
       {result && <WordResult data={result} theme={currentTheme} />}
     </Container>
