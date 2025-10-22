@@ -1,5 +1,7 @@
 import React from "react";
 
+import { ExternalLink } from "~/assets/svgs";
+
 import { SourceContainer, SourceLink, SourceText } from "./styles";
 
 const SourceLinks: React.FC<{
@@ -15,16 +17,12 @@ const SourceLinks: React.FC<{
       <SourceText>Source</SourceText>
       {urls.map((url, index) => (
         <div key={index}>
-          <SourceLink
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            theme={theme}
-          >
+          <SourceLink href={url} target="_blank" rel="noopener noreferrer">
             {url}
           </SourceLink>
         </div>
       ))}
+      <ExternalLink />
     </SourceContainer>
   );
 };
