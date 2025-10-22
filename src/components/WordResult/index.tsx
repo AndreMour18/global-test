@@ -61,9 +61,7 @@ const WordResult: React.FC<WordResultProps> = ({ data, theme }) => {
 
           {meaning.synonyms && meaning.synonyms.length > 0 && (
             <Synonyms>
-              <MeaningTitle style={{ marginBottom: 0, marginRight: "1rem" }}>
-                Synonyms
-              </MeaningTitle>
+              <MeaningTitle>Synonyms</MeaningTitle>
               {meaning.synonyms.slice(0, 5).map((synonym, synonymIndex) => (
                 <SynonymTag key={synonymIndex}>{synonym}</SynonymTag>
               ))}

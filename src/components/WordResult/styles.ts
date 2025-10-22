@@ -73,7 +73,6 @@ export const MeaningTitle = styled.h3`
   color: ${({ theme }) => theme.textSecondary};
   font-size: 1.25rem;
   font-weight: 400;
-  margin-bottom: 1rem;
 `;
 
 export const DefinitionList = styled.ul`
@@ -101,9 +100,7 @@ export const Example = styled.p`
 export const Synonyms = styled.div`
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  gap: 1rem;
 `;
 
 export const SynonymTag = styled.span`
