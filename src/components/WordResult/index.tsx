@@ -1,40 +1,81 @@
 import React from "react";
 
-import { Audio, Wrapper } from "./styles";
+import { WordResultProps } from "./types";
+import {
+  ResultContainer,
+  WordHeader,
+  WordInfo,
+  WordTitle,
+  Phonetic,
+  MeaningSection,
+  PartOfSpeech,
+  PartOfSpeechText,
+  Divider,
+  MeaningTitle,
+  DefinitionList,
+  DefinitionItem,
+  Example,
+  Synonyms,
+  SynonymTag,
+  NoResults,
+} from "./styles";
+import { PlayButton, SourceLinks } from "./components";
 
-interface Props {
-  data: any;
-}
+const WordResult: React.FC<WordResultProps> = ({ data, theme }) => {
+  if (!data) {
+    return <NoResults>No results found</NoResults>;
+  }
 
-const WordResult: React.FC<Props> = ({ data }) => {
-  const phonetic =
-    data.phonetics?.find((p: any) => p.audio) || data.phonetics?.[0];
+  const audioPhonetic = data.phonetics?.find((phonetic) => phonetic.audio);
+  const audioUrl = audioPhonetic?.audio;
 
   return (
-    <Wrapper>
-      <h2>{data.word}</h2>
-      {phonetic?.text && <p>{phonetic.text}</p>}
-      {phonetic?.audio && (
-        <Audio controls>
-          <source src={phonetic.audio} type="audio/mp3" />
-        </Audio>
-      )}
-      {data.meanings.map((m: any, i: number) => (
-        <div key={i}>
-          <h3>{m.partOfSpeech}</h3>
-          <ul>
-            {m.definitions.map((d: any, j: number) => (
-              <li key={j}>{d.definition}</li>
+    <ResultContainer>
+      <WordHeader>
+        <WordInfo>
+          <WordTitle>{data.word}</WordTitle>
+          {data.phonetic && <Phonetic>{data.phonetic}</Phonetic>}
+        </WordInfo>
+        <PlayButton audioUrl={audioUrl} theme={theme} />
+      </WordHeader>
+
+      {data.meanings?.map((meaning, index) => (
+        <MeaningSection key={index}>
+          <PartOfSpeech>
+            <PartOfSpeechText>{meaning.partOfSpeech}</PartOfSpeechText>
+            <Divider />
+          </PartOfSpeech>
+
+          <MeaningTitle>Meaning</MeaningTitle>
+
+          <DefinitionList>
+            {meaning.definitions?.slice(0, 3).map((definition, defIndex) => (
+              <DefinitionItem key={defIndex}>
+                {definition.definition}
+                {definition.example && (
+                  <Example>"{definition.example}"</Example>
+                )}
+              </DefinitionItem>
             ))}
-          </ul>
-        </div>
+          </DefinitionList>
+
+          {meaning.synonyms && meaning.synonyms.length > 0 && (
+            <Synonyms>
+              <MeaningTitle style={{ marginBottom: 0, marginRight: "1rem" }}>
+                Synonyms
+              </MeaningTitle>
+              {meaning.synonyms.slice(0, 5).map((synonym, synonymIndex) => (
+                <SynonymTag key={synonymIndex}>{synonym}</SynonymTag>
+              ))}
+            </Synonyms>
+          )}
+        </MeaningSection>
       ))}
-      {data.sourceUrls && (
-        <a href={data.sourceUrls[0]} target="_blank" rel="noopener noreferrer">
-          Fonte
-        </a>
+
+      {data.sourceUrls && data.sourceUrls.length > 0 && (
+        <SourceLinks urls={data.sourceUrls} theme={theme} />
       )}
-    </Wrapper>
+    </ResultContainer>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 
 import { fontOptions } from "~/utils/fonts";
-import Arrow from "~/assets/svgs/Arrow";
+import { Arrow } from "~/assets/svgs";
 
 import { Container, SelectButton, Dropdown, FontOption } from "./styles";
 

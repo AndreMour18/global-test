@@ -1,6 +1,6 @@
 import React from "react";
 
-import Search from "~/assets/svgs/Search";
+import { Search } from "~/assets/svgs";
 
 import { SearchContainer, Input, SearchButton } from "./styles";
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-import Moon from "~/assets/svgs/Moon";
+import { Moon } from "~/assets/svgs";
 
 import {
   ToggleContainer,

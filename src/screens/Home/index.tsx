@@ -2,7 +2,7 @@ import React, { useState, useCallback } from "react";
 import { useFormik } from "formik";
 
 import { SearchBar, WordResult, ThemeToggle, FontSelector } from "~/components";
-import Book from "~/assets/svgs/Book";
+import { Book } from "~/assets/svgs";
 
 import { Container, ErrorMsg, Header, LoadingText, Divider } from "./styles";
 import { validationSchema } from "./validationSchema";
@@ -104,7 +104,7 @@ const Home: React.FC<Props> = ({
       {touched.word && errors.word && <ErrorMsg>{errors.word}</ErrorMsg>}
       {apiError && <ErrorMsg>{apiError}</ErrorMsg>}
       {isLoading && <LoadingText>Loading...</LoadingText>}
-      {result && <WordResult data={result} />}
+      {result && <WordResult data={result} theme={currentTheme} />}
     </Container>
   );
 };
