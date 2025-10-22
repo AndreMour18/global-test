@@ -45,9 +45,6 @@ export const Divider = styled.div`
 export const ErrorMsg = styled.span`
   color: #ff5252;
   font-size: 1.125rem;
-  margin-top: 0.5rem;
-  display: block;
-  text-align: center;
 `;
 
 export const LoadingText = styled.p`

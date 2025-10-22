@@ -97,6 +97,8 @@ const Home: React.FC<Props> = ({
         onChange={handleSearchBarChange}
         onSearch={handleSearchBarSearch}
         disabled={isLoading}
+        theme={currentTheme}
+        hasError={!!(touched.word && errors.word) || !!apiError}
       />
 
       {touched.word && errors.word && <ErrorMsg>{errors.word}</ErrorMsg>}
