@@ -9,12 +9,6 @@ export const WordHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
 `;
 
 export const WordInfo = styled.div`
